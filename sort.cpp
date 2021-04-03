@@ -6,6 +6,21 @@ using namespace std;
 using std::cout;
 using std::cin;
 
+void mysort(int inSizeArray, int* inArray) {
+	
+	for (int Index1 = 0; Index1 < inSizeArray - 1; ++Index1) {
+		
+		int minIndex = Index1;
+		
+		for (int Index2 = Index1 + 1; Index2 < inSizeArray; ++Index2) {
+			if (inArray[Index2] < inArray[minIndex])
+				
+				minIndex = Index2;
+		};
+		
+		std::swap(inArray[Index1], inArray[minIndex]);
+	};
+}
 int main() {
 	// Ввод массива и его размер осуществляется с клавиатуры;
 	size_t size;
@@ -15,7 +30,7 @@ int main() {
 	std::cin
 		>> size;
 
-	std::vector<int> array(size);
+	std::vector<int> myarray(size);
 
 	std::cout
 		<< "Enter "
@@ -25,25 +40,12 @@ int main() {
 	for (size_t i = 0; i < size; i++) {
 
 		std::cin
-			>> array[i];
+			>> myarray[i];
 	}
-	// Index1 - начальное значение индекса;
-	for (int Index1 = 0; Index1 < size - 1; ++Index1) {
-		// minIndex - сюда записывается индекс наименьшего значения, которое было найдено в этой итерации
-		// Начнём с того, что наименьший элемент - первый элемент, т.е. с индексом 0
-		int minIndex = Index1;
-		// Ищем элемент поменьше в другой части массива
-		for (int Index2 = Index1 + 1; Index2 < size; ++Index2) {
-			if (array[Index2] < array[minIndex])
-				// Если нашли такой элемент, то запоминаем его
-				minIndex = Index2;
-		};
-		// Меняем его местами с тем, что обнаружили ранее
-		std::swap(array[Index1], array[minIndex]); //
-	};
+	mysort(size, data(myarray));
 	// Вывод отсортированного массива на экран
 	for (int index = 0; index < size; ++index)
-		std::cout << array[index] << ' ';
+		std::cout << myarray[index] << ' ';
 
 	return 0;
 };
