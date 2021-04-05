@@ -42,7 +42,7 @@ int main() {
 		std::cin
 			>> myarray[i];
 	}
-	mysort(size, data(myarray));
+	mysort(size, myarray.data());
 	// Вывод отсортированного массива на экран
 	for (int index = 0; index < size; ++index)
 		std::cout << myarray[index] << ' ';
